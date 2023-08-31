@@ -1,0 +1,23 @@
+.home {
+  background-color: #b7c7fc; 
+  height: calc(100vh - 60px); 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.home__container {
+  border: 1px solid white; 
+  border-radius: 10px; 
+  max-width: 768px; 
+  margin: 0 auto; 
+  height: 80%; 
+  display: flex; 
+  overflow: hidden; 
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    padding: 0 20px; 
+  }
+}

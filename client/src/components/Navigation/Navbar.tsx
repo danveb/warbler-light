@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { links } from "../constants/links"; 
-import "../styles/Navbar.css"; 
-import { openProps } from "../types/index"; 
+import { links } from "../../constants/links"; 
+import "../../styles/Navbar.css"; 
+import { openProps } from "../../types/index"; 
 
 export default function Navbar({ menuOpen, setMenuOpen }: openProps) {
   // useEffect 
-  // when resizing window we'll handle state back to closing mobileMenu/navbar bg
+  // when resizing window we'll handle state back to closing navbarSidebar/navbar bg
   useEffect(() => {
     const handleResize = () => {
       if(menuOpen) {

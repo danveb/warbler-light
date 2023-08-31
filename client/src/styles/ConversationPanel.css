@@ -1,0 +1,25 @@
+.conversationPanel {
+  flex: 2; 
+}
+
+.conversationPanel__info {
+  height: 50px; 
+  background-color: #5d5b8d; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 10px; 
+  color: lightgray; 
+}
+
+.conversationPanel__icons {
+  display: flex; 
+  gap: 10px; 
+}
+
+.conversationPanel__icons img {
+  cursor: pointer; 
+  width: 24px; 
+  height: 24px; 
+  object-fit: cover; 
+}

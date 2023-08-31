@@ -1,0 +1,43 @@
+.chatNav {
+  height: 50px; 
+  padding: 10px; 
+  background-color: #2f2d52; 
+  color: #ddddf7; 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+}
+
+.chatNav__logo {
+  font-weight: bold; 
+}
+
+.chatNav__user {
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+}
+
+.chatNav__user img {
+  height: 24px; 
+  width: 24px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+}
+
+.chatNav__user button {
+  background-color: #5d5b8d; 
+  color: #ddddf7; 
+  border: none; 
+  font-size: 10px; 
+  cursor: pointer; 
+}
+
+@media screen and (max-width: 768px) {
+  /* button to be at bottom-left of ChatPanel (position relative for correct placement) */
+  .chatNav__user button {
+    position: absolute; 
+    bottom: 10px; 
+    left: 10px; 
+  }
+}

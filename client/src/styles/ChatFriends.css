@@ -1,0 +1,39 @@
+.chatFriends {
+  background-color: #3e3c61; 
+}
+
+.chatFriends__user {
+  padding: 10px; 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  color: #fff; 
+  cursor: pointer; 
+}
+
+.chatFriends__user:hover {
+  background-color: #2f2d52; 
+}
+
+.chatFriends__user img {
+  width: 50px; 
+  height: 50px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+}
+
+.chatFriends__user--info span {
+  font-weight: bold; 
+  color: #fff; 
+}
+
+.chatFriends__user--info p {
+  color: #a2a2a2; 
+  font-family: sans-serif; 
+}
+
+@media screen and (max-width: 480px) {
+  .chatFriends__user--info {
+    display: none; 
+  }
+}
