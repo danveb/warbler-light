@@ -1,6 +1,6 @@
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { GoogleAuthProvider, User, UserCredential, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { createContext, useState, useEffect, ReactNode } from "react";
 
 export interface AuthContextProps {
   googleSignIn: () => Promise<UserCredential>; 
@@ -47,3 +47,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     </AuthContext.Provider>
   )
 };
+
+export const UserAuth = () => {
+  return useContext(AuthContext); 
+}
