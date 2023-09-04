@@ -4,3 +4,10 @@
   background-color: #3e3c61; 
   position: relative; 
 }
+
+@media screen and (max-width: 480px) {
+  .chatPanel {
+    width: 0; 
+    overflow: hidden; 
+  }
+}

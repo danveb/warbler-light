@@ -40,3 +40,23 @@
   color: #fff; 
   background-color: #8da4f1; 
 }
+
+@media screen and (max-width: 480px) {
+  .messageInput__send img {
+    width: 15px; 
+    height: 15px; 
+  }
+
+  .messageInput__btn {
+    font-size: 12px; 
+    padding: 5px; 
+  }
+
+  .messageInput input {
+    font-size: 13px; 
+  }
+
+  .messageInput input::placeholder {
+    font-size: 13px; 
+  }
+}

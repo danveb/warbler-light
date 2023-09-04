@@ -40,4 +40,8 @@
     bottom: 10px; 
     left: 10px; 
   }
+
+  .chatNav__user p {
+    display: none; 
+  }
 }

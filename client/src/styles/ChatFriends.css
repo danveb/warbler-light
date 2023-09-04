@@ -33,7 +33,13 @@
 }
 
 @media screen and (max-width: 480px) {
+  .chatFriends__user img {
+    width: 40px; 
+    height: 40px; 
+  }
+  
   .chatFriends__user--info {
+    font-size: 12px; 
     display: none; 
   }
 }

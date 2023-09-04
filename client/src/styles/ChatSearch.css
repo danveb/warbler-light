@@ -42,3 +42,15 @@
   font-weight: bold; 
   color: #fff; 
 }
+
+@media screen and (max-width: 480px) {
+  .user__chat img {
+    height: 40px; 
+    width: 40px; 
+  }
+  
+  .user__chat p {
+    font-size: 12px; 
+    display: none; 
+  }
+}
