@@ -3,14 +3,26 @@ import { ChatPanel } from "../components/ChatApp";
 import "../styles/Home.css"; 
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebase";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   // useAuthState 
   const [user] = useAuthState(auth); 
 
+  // useNavigate
+  const navigate = useNavigate(); 
+
+  // useEffect
+  useEffect(() => {
+    if(!user) {
+      navigate("/register"); 
+    }
+  }, [navigate, user]); 
+
   return (
     <div className="home">
-      <div className="home__container">
+      <div className="home__container">  
         <ChatPanel {...user} />
         <ConversationPanel />
       </div>
