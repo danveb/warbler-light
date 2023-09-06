@@ -2,14 +2,20 @@ import { useState } from "react";
 import "../../styles/Register.css"; 
 import { RegisterProps } from "../../types";
 import { Link } from "react-router-dom";
+import GoogleButton from "react-google-button";
+import { UserAuth } from "../../context/AuthContext";
+import { updateProfile } from "firebase/auth";
 
 export default function Register() {
+  // UserAuth 
+  const { signUpWithEmailAndPassword, setUser } = UserAuth(); 
+
   // useState
   const [formData, setFormData] = useState<RegisterProps>({
     displayName: "", 
     email: "", 
     password: "", 
-    avatar: "", 
+    avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Twemoji_1f351.svg/1200px-Twemoji_1f351.svg.png", 
   }); 
 
   // destructure all elements from formData 
@@ -23,17 +29,26 @@ export default function Register() {
     })); 
   };
 
-  // handleAvatarUrl
-  const handleAvatarUrl = (filePath: string) => {
-    const splitPath = filePath.split("\\"); 
-    const fileName = splitPath[splitPath.length - 1]; 
-    return fileName; // add-img.png
+  // handleSignUpWithEmailAndPassword
+  const handleSignUpWithEmailAndPassword = async (email: string, password: string, displayName: string, avatar: string) => {
+    try {
+      const userCredential = await signUpWithEmailAndPassword(email, password); 
+      const updatedUser = await updateProfile(userCredential.user, {
+        displayName: displayName, 
+        photoURL: avatar, 
+      }); 
+      setUser(updatedUser); // throw TS error... trying to bug fix
+      // console.log(updatedUser); 
+    } catch(error) {
+      console.log(error); 
+    }
   };
 
   // handleSubmit 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
-    console.log(handleAvatarUrl(avatar)); 
+    console.log(avatar); 
+    await handleSignUpWithEmailAndPassword(email, password, displayName, avatar); 
   };
 
   return (
@@ -69,18 +84,22 @@ export default function Register() {
             placeholder="**********"
             autoComplete="on"
           />
-          <label htmlFor="avatar">Avatar</label>
           <input 
             className="avatar__input"
-            // style={{ display: "none" }}
+            style={{ display: "none" }}
             type="file"
             id="file"
             name="avatar"
-            value={avatar}
             onChange={handleChange}
           />
           <button>Register</button>
           <p>already have an account?<Link to="/login">Login</Link></p>
+          <div className="googleBtn">
+            <GoogleButton 
+              // type="light" // by default it's dark
+              // label="" // custom message if needed
+            />
+          </div>
         </form>
       </div>
     </div>

@@ -14,16 +14,18 @@ export default function Home() {
   const navigate = useNavigate(); 
 
   // useEffect
-  useEffect(() => {
-    if(!user) {
-      navigate("/register"); 
-    }
-  }, [navigate, user]); 
+  // useEffect(() => {
+  //   if(!user) {
+  //     navigate("/register"); 
+  //   }
+  // }, [navigate, user]); 
+
+  console.log(user); 
 
   return (
     <div className="home">
       <div className="home__container">  
-        <ChatPanel {...user} />
+        <ChatPanel />
         <ConversationPanel />
       </div>
     </div>

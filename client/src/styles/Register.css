@@ -10,7 +10,6 @@
   display: flex; 
   justify-content: center; 
   align-items: center; 
-  min-width: 380px; 
 }
 
 .register__form {
@@ -18,7 +17,7 @@
   flex-direction: column; 
   gap: 25px; 
   background-color: var(--alice-blue); 
-  padding: 70px; 
+  padding: 20px 50px; 
   border-radius: 10px; 
   width: 100%; 
   color: var(--rich-black); 
@@ -75,4 +74,21 @@
 .register__form p a {
   text-decoration: none;  
   color: #646cff; 
+}
+
+@media screen and (max-width: 768px) {
+  .register__form {
+    margin: 20px; 
+    padding: 20px 25px; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .register__form p {
+    justify-content: center; 
+  }
+
+  .register {
+    height: 100%; 
+  }
 }

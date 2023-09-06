@@ -44,3 +44,15 @@ button:hover {
   background-color: var(--alice-blue); 
   color: var(--raisin-black); 
 }
+
+.googleBtn {
+  display: flex; 
+  justify-content: flex-end; 
+  align-items: center; 
+}
+
+@media screen and (max-width: 480px) {
+  .googleBtn {
+    justify-content: center; 
+  }
+}

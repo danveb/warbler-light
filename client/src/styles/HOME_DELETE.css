@@ -1,0 +1,89 @@
+.home {
+  width: 100%; 
+  height: 100%; 
+}
+
+.home__wrapper {
+  max-width: 768px; 
+  margin: 0 auto; 
+  width: 100%; 
+  height: 100%; 
+  background-color: var(--rich-black); 
+}
+
+.home__main,
+.home__skills {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  gap: 20px; 
+  margin: 40px 0;
+}
+
+.home__title {
+  font-family: "Mulish", sans-serif; 
+  font-size: 20px; 
+  color: var(--alice-blue); 
+  letter-spacing: 0.5px; 
+}
+
+.home__profile {
+  max-height: 500px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.home__profile img {
+  width: 50%; 
+  height: 50%; 
+  object-fit: contain; 
+}
+
+.home__intro {
+  font-family: inherit; 
+  font-size: 16px; 
+  font-weight: 300; 
+  color: #d4d4d4; 
+  letter-spacing: 1px; 
+  line-height: 1.5rem; 
+}
+
+.home__intro p span {
+  color: #fff;
+  font-weight: 600; 
+}
+
+.home__skills ul {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+  gap: 30px; 
+}
+
+.home__skills li {
+  list-style: none; 
+}
+
+.home__skills img {
+  height: 45px; 
+  width: 45px; 
+  object-fit: contain; 
+}
+
+@media screen and (max-width: 1024px) {
+  .home__wrapper {
+    padding: 0 20px; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home__title {
+    font-size: 16px; 
+  }
+
+  .home__intro {
+    font-size: 14px; 
+  }
+}

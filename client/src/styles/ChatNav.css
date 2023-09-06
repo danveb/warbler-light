@@ -1,21 +1,21 @@
 .chatNav {
   height: 50px; 
-  padding: 10px; 
+  padding: 5px 10px; 
   background-color: #2f2d52; 
   color: #ddddf7; 
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
 }
 
 .chatNav__logo {
-  font-weight: bold; 
+  font-size: 14px; 
 }
 
 .chatNav__user {
   display: flex;
   align-items: center; 
+  justify-content: space-between; 
   gap: 10px; 
+  font-size: 14px; 
+  text-align: center; 
 }
 
 .chatNav__user img {
@@ -25,22 +25,37 @@
   object-fit: cover; 
 }
 
-.chatNav__user button {
+.chatNav__logout--btn {
   background-color: #5d5b8d; 
   color: #ddddf7; 
+  font-weight: bold; 
   border: none; 
   font-size: 10px; 
   cursor: pointer; 
+  padding: 5px 10px; 
+  width: fit-content; 
 }
 
 @media screen and (max-width: 768px) {
+  .chatNav__user {
+    justify-content: space-around; 
+  }
+  
   /* button to be at bottom-left of ChatPanel (position relative for correct placement) */
-  .chatNav__user button {
+  .chatNav__logout--btn {
     position: absolute; 
     bottom: 10px; 
     left: 10px; 
   }
+}
 
+@media screen and (max-width: 480px) {
+  .chatNav {
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start; 
+  }
+  
   .chatNav__user p {
     display: none; 
   }

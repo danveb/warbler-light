@@ -4,12 +4,15 @@
 
 .conversationPanel__info {
   height: 50px; 
-  background-color: #5d5b8d; 
+  background-color: #9f9dc8; 
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
-  padding: 10px; 
-  color: lightgray; 
+  padding: 5px 10px; 
+}
+
+.conversationPanel__info p {
+  font-size: 14px; 
 }
 
 .conversationPanel__icons {

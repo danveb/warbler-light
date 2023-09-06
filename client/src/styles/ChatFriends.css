@@ -3,11 +3,10 @@
 }
 
 .chatFriends__user {
-  padding: 10px; 
+  padding: 3px 10px; 
   display: flex; 
   align-items: center; 
   gap: 10px; 
-  color: #fff; 
   cursor: pointer; 
 }
 
@@ -16,30 +15,43 @@
 }
 
 .chatFriends__user img {
-  width: 50px; 
-  height: 50px; 
+  width: 45px; 
+  height: 45px; 
   border-radius: 50%; 
   object-fit: cover; 
 }
 
-.chatFriends__user--info span {
-  font-weight: bold; 
-  color: #fff; 
-}
-
+.chatFriends__user--info h3,
 .chatFriends__user--info p {
-  color: #a2a2a2; 
+  font-weight: 400; 
   font-family: sans-serif; 
 }
 
+.chatFriends__user--info h3 {
+  font-size: 14px; 
+  color: #e1e1e1; 
+}
+
+.chatFriends__user--info p {
+  font-size: 13px; 
+  color: #a2a2a2; 
+}
+
 @media screen and (max-width: 480px) {
+  .chatFriends__user {
+    padding: 8px 10px; 
+  }
+
   .chatFriends__user img {
-    width: 40px; 
-    height: 40px; 
+    width: 25px; 
+    height: 25px; 
+  }
+
+  .chatFriends__user--info h3 {
+    font-size: 11px; 
   }
   
-  .chatFriends__user--info {
-    font-size: 12px; 
+  .chatFriends__user--info p {
     display: none; 
   }
 }

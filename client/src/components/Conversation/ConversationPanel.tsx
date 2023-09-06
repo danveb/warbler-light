@@ -1,16 +1,16 @@
 import "../../styles/ConversationPanel.css"; 
-import add from "../../assets/add.png"; 
-import more from "../../assets/more.png"; 
+import addFile from "../../assets/add-file.png"; 
+import addMore from "../../assets/add-more.png"; 
 import { Messages, MessageInput } from "./index";
 
 export default function ConversationPanel() {
   return (
     <div className="conversationPanel">
       <div className="conversationPanel__info">
-        <span>My Friend</span>
+        <p>My Friend</p>
         <div className="conversationPanel__icons">
-          <img src={add} alt="add icon" />
-          <img src={more} alt="more icon" />
+          <img src={addFile} alt="add icon" />
+          <img src={addMore} alt="add icon" />
         </div>
       </div>
       <Messages />

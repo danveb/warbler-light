@@ -1,13 +1,13 @@
 import { ChatFriends, ChatNav, ChatSearch } from "./index"; 
 import "../../styles/ChatPanel.css"; 
-import { UserProps } from "../../types";
+// import { UserProps } from "../../types"; 
 
-export default function ChatPanel(user: UserProps) {
+export default function ChatPanel() {
   return (
     <div className="chatPanel">
-      <ChatNav {...user} />
-      <ChatSearch {...user} />
-      <ChatFriends {...user} />
+      <ChatNav />
+      <ChatSearch />
+      <ChatFriends />
     </div>
   )
 }

@@ -1,7 +1,6 @@
-import { UserProps } from "../../types"; 
 import "../../styles/ChatSearch.css"; 
 
-export default function ChatSearch(user: UserProps) {
+export default function ChatSearch() {
   return (
     <div className="chatSearch">
       <div className="chatSearch__form">
@@ -10,12 +9,12 @@ export default function ChatSearch(user: UserProps) {
           placeholder="Find a user"
         />
       </div>
-      <div className="user__chat">
+      {/* <div className="user__chat">
         <img src={user?.photoURL} alt="" />
         <div className="user__chat--info">
           <p>{user?.displayName}</p>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

@@ -27,6 +27,7 @@
   color: gray; 
   font-weight: 300; 
   gap: 10px; 
+  margin-top: 14px; 
 }
 
 .message__info span {

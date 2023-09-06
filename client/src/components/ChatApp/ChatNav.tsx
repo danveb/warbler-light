@@ -1,14 +1,46 @@
+import { UserAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import bubble from "../../assets/bubble.png"; 
 import "../../styles/ChatNav.css"; 
-import { UserProps } from "../../types";
 
-export default function ChatNav(user: UserProps) {
+export default function ChatNav() {
+  // UserAuth 
+  const { user, logOut } = UserAuth(); 
+
+  // useNavigate
+  const navigate = useNavigate(); 
+
+  // handleLogOut
+  const handleLogOut = async () => {
+    try {
+      await logOut(); 
+      navigate("/login"); 
+    } catch(error) {
+      console.log(error); 
+    }
+  }
+
+  // handleLogIn 
+  const handleLogIn = () => {
+    navigate("/login"); 
+  }
+
   return (
     <div className="chatNav">
-      <span className="chatNav__logo">🔥</span>
       <div className="chatNav__user">
-        <img src={user.photoURL} />
-        <p>{user.displayName}</p>
-        <button>Logout</button>
+        {user && user.photoURL ? (
+          <>
+            <img src={user.photoURL} alt="profile picture" />
+            <p>{user?.displayName}</p>
+            <button className="chatNav__logout--btn" onClick={handleLogOut}>Logout</button>
+          </>
+        ) : (
+          <>
+            <img src={bubble} alt="profile picture" />
+            <p>1234567890</p>
+            <button className="chatNav__logout--btn" onClick={handleLogIn}>Login</button>
+          </>
+        )}
       </div>
     </div>
   )

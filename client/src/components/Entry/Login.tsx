@@ -1,9 +1,17 @@
 import { useState } from "react"; 
 import "../../styles/Login.css"; 
 import { LoginProps } from "../../types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import GoogleButton from "react-google-button";
+import { UserAuth } from "../../context/AuthContext";
 
 export default function Login() {
+  // UserAuth 
+  const { googleSignIn, loginWithEmailAndPassword } = UserAuth();
+  
+  // useNavigate
+  const navigate = useNavigate(); 
+
   // useState
   const [formData, setFormData] = useState<LoginProps>({
     email: "", 
@@ -21,9 +29,31 @@ export default function Login() {
     })); 
   };
 
+  // handleGoogleSignIn
+  const handleGoogleSignIn = async () => {
+    try {
+      await googleSignIn(); 
+      navigate("/"); 
+    } catch(error) {
+      console.log(error); 
+    }
+  }
+
+  // handleLoginWithEmailAndPassword 
+  const handleLoginWithEmailAndPassword = async (email: string, password: string) => {
+    try {
+      await loginWithEmailAndPassword(email, password); 
+    } catch(error) {
+      console.log(error); 
+    }
+  }; 
+
   // handleSubmit 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
+    // call handleLoginWithEmailAndPassword  
+    await handleLoginWithEmailAndPassword(email, password); 
+    navigate("/"); 
   };
 
   return (
@@ -52,6 +82,14 @@ export default function Login() {
           />
           <button>Login</button>
           <p>new to warbler?<Link to="/register">Register</Link></p>
+          <div className="googleBtn">
+            <GoogleButton 
+              // type="light" // by default it's dark
+              // label="" // custom message if needed
+              // handle googleSignIn
+              onClick={handleGoogleSignIn}
+            />
+          </div>
         </form>
       </div>
     </div>
