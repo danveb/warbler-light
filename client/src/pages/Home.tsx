@@ -1,7 +1,6 @@
 import { ConversationPanel } from "../components/Conversation";
 import { ChatPanel } from "../components/ChatApp";
 import "../styles/Home.css"; 
-// import { UserAuth } from "../context/AuthContext";
 
 export default function Home() {
   return (

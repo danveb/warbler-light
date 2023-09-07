@@ -36,12 +36,17 @@ export default function Login() {
     try {
       const response = await googleSignIn(); 
       const userCredential = response; 
+      
+      // add user's credential into firebase firestore db 
       await setDoc(doc(db, "users", userCredential.user.uid), {
         uid: userCredential.user.uid, 
         displayName: userCredential.user.displayName, 
         email: userCredential.user.displayName, 
         photoURL: userCredential.user.photoURL, 
       }); 
+
+      // add user's chat into firebase firestore db 
+      await setDoc(doc(db, "chats", userCredential.user.uid), {}); 
       navigate("/"); 
     } catch(error) {
       console.log(error); 

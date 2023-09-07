@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface openProps {
   menuOpen: boolean; 
   setMenuOpen: (menuOpen: boolean) => void; 
@@ -18,4 +20,8 @@ export interface RegisterProps {
 export interface LoginProps {
   email: string; 
   password: string; 
+}
+
+export interface ProtectedRouteProps {
+  children: React.ReactNode; 
 }
