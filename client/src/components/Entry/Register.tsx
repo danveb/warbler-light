@@ -1,14 +1,19 @@
 import { useState } from "react"; 
 import "../../styles/Register.css"; 
 import { RegisterProps } from "../../types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../../context/AuthContext";
 import { updateProfile } from "firebase/auth";
+import { db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore"; 
 
 export default function Register() {
   // UserAuth 
-  const { signUpWithEmailAndPassword, setUser } = UserAuth(); 
+  const { signUpWithEmailAndPassword } = UserAuth(); 
+
+  // useNavigate
+  const navigate = useNavigate(); 
 
   // useState
   const [formData, setFormData] = useState<RegisterProps>({
@@ -33,12 +38,19 @@ export default function Register() {
   const handleSignUpWithEmailAndPassword = async (email: string, password: string, displayName: string, avatar: string) => {
     try {
       const userCredential = await signUpWithEmailAndPassword(email, password); 
-      const updatedUser = await updateProfile(userCredential.user, {
+      // setUser(...) throws error, fixing with following line
+      await updateProfile(userCredential.user, {
         displayName: displayName, 
         photoURL: avatar, 
       }); 
-      setUser(updatedUser); // throw TS error... trying to bug fix
-      // console.log(updatedUser); 
+      
+      // add user's credential into firebase firestore db 
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        uid: userCredential.user.uid, 
+        displayName, 
+        email,
+        photoURL: avatar, 
+      }); 
     } catch(error) {
       console.log(error); 
     }
@@ -47,8 +59,8 @@ export default function Register() {
   // handleSubmit 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
-    console.log(avatar); 
     await handleSignUpWithEmailAndPassword(email, password, displayName, avatar); 
+    navigate("/"); 
   };
 
   return (

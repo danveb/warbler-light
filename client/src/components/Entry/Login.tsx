@@ -4,6 +4,8 @@ import { LoginProps } from "../../types";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
 import { UserAuth } from "../../context/AuthContext";
+import { doc, setDoc } from "firebase/firestore"; 
+import { db } from "../../firebase";
 
 export default function Login() {
   // UserAuth 
@@ -32,7 +34,14 @@ export default function Login() {
   // handleGoogleSignIn
   const handleGoogleSignIn = async () => {
     try {
-      await googleSignIn(); 
+      const response = await googleSignIn(); 
+      const userCredential = response; 
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        uid: userCredential.user.uid, 
+        displayName: userCredential.user.displayName, 
+        email: userCredential.user.displayName, 
+        photoURL: userCredential.user.photoURL, 
+      }); 
       navigate("/"); 
     } catch(error) {
       console.log(error); 

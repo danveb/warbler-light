@@ -8,7 +8,7 @@ export interface AuthContextProps {
   loginWithEmailAndPassword: (email: string, password: string) => Promise<UserCredential>; 
   signUpWithEmailAndPassword: (email: string, password: string) => Promise<UserCredential>; 
   user: User | null; 
-  setUser: (user: User | null) => void;  
+  // setUser: React.Dispatch<SetStateAction<User | null>>; // no longer needed since fixed bug
 }
 
 export interface AuthContextProviderProps {
@@ -55,7 +55,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   }; 
 
   return (
-    <AuthContext.Provider value={{ user, setUser, googleSignIn, logOut, loginWithEmailAndPassword, signUpWithEmailAndPassword }}>
+    <AuthContext.Provider value={{ user, googleSignIn, logOut, loginWithEmailAndPassword, signUpWithEmailAndPassword }}>
       { children }
     </AuthContext.Provider>
   )
