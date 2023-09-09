@@ -1,12 +1,17 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react";
-import { collection, query, where, getDocs } from "firebase/firestore"; 
+import { collection, query, where, getDocs, setDoc, getDoc, doc, updateDoc, serverTimestamp } from "firebase/firestore"; 
 import { db } from "../../firebase";
 import { User } from "firebase/auth";
 import "../../styles/ChatSearch.css"; 
+import { UserAuth } from "../../context/AuthContext";
 
 export default function ChatSearch() {
   const [username, setUsername] = useState(""); 
-  const [user, setUser] = useState<User | null>(null); 
+  const [currentUser, setCurrentUser] = useState<User | null>(null); 
+  const [error, setError] = useState<boolean>(false); 
+
+  // UserAuth
+  const { user } = UserAuth(); 
 
   // handleSearch
   const handleSearch = async () => {
@@ -17,10 +22,11 @@ export default function ChatSearch() {
       const querySnapshot = await getDocs(q); 
       querySnapshot.forEach((doc) => {
         // console.log(doc.data()); // returns displayName, email, photoURL, uid
-        setUser(doc.data() as User); 
+        setCurrentUser(doc.data() as User); 
       });
     } catch(error) {
       console.log(error); 
+      setError(true); 
     }
   };
 
@@ -35,6 +41,45 @@ export default function ChatSearch() {
     setUsername(e.target.value); 
   };
 
+  // handleSelect 
+  const handleSelect = async (): Promise<void> => {
+    if(user && currentUser) {
+      // check whether chats collection exists 
+      const combinedId = user.uid > currentUser.uid ? user.uid + currentUser.uid : currentUser.uid + user.uid; 
+      try {
+        const response = await getDoc(doc(db, "chats", combinedId)); 
+        if(!response.exists()) {
+          // create a chat in chats collection
+          await setDoc(doc(db, "chats", combinedId), { messages: [] }); 
+          
+          // create user chats 
+          await updateDoc(doc(db, "userChats", user.uid), {
+            [combinedId+".userInfo"]: {
+              uid: currentUser.uid,
+              displayName: currentUser.displayName, 
+              photoURL: currentUser.photoURL, 
+            },
+            [combinedId+".date"]: serverTimestamp()
+          });
+
+          // create user chats 
+          await updateDoc(doc(db, "userChats", currentUser.uid), {
+            [combinedId+".userInfo"]: {
+              uid: user.uid,
+              displayName: user.displayName, 
+              photoURL: user.photoURL, 
+            },
+            [combinedId+".date"]: serverTimestamp()
+          })
+        }
+      } catch(error) {
+        console.log(error); 
+      }
+    }
+    setCurrentUser(null); 
+    setUsername(""); 
+  };
+
   return (
     <div className="chatSearch">
       <div className="chatSearch__form">
@@ -46,11 +91,12 @@ export default function ChatSearch() {
           value={username}
         />
       </div>
-      {user && user.photoURL && (
-        <div className="user__chat">
-          <img src={user.photoURL} alt="" />
+      {error && <span>User not found...</span>}
+      {currentUser && currentUser.photoURL && (
+        <div className="user__chat" onClick={handleSelect}>
+          <img src={currentUser.photoURL} alt="" />
           <div className="user__chat--info">
-            <h3>{user.displayName}</h3>
+            <h3>{currentUser.displayName}</h3>
           </div>
         </div>
       )}

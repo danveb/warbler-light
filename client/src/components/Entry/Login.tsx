@@ -45,8 +45,8 @@ export default function Login() {
         photoURL: userCredential.user.photoURL, 
       }); 
 
-      // add user's chat into firebase firestore db 
-      await setDoc(doc(db, "chats", userCredential.user.uid), {}); 
+      // add userChats into firestore db 
+      await setDoc(doc(db, "userChats", userCredential.user.uid), {}); 
       navigate("/"); 
     } catch(error) {
       console.log(error); 
