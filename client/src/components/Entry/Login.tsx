@@ -96,14 +96,15 @@ export default function Login() {
           />
           <button>Login</button>
           <p>new to warbler?<Link to="/register">Register</Link></p>
-          <div className="googleBtn">
+          {/* currently there's a bug affecting GoogleSignIn where chats are not correctly loaded... */}
+          {/* <div className="googleBtn">
             <GoogleButton 
               // type="light" // by default it's dark
               // label="" // custom message if needed
               // handle googleSignIn
               onClick={handleGoogleSignIn}
             />
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

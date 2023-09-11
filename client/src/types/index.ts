@@ -26,21 +26,40 @@ export interface ProtectedRouteProps {
   children: React.ReactNode; 
 }
 
+// export interface ChatData {
+//   [key: string]: {
+//     userInfo: {
+//       uid: string; 
+//       displayName: string; 
+//       photoURL: string; 
+//     }; 
+//     date: {
+//       seconds: number; 
+//     };
+//     lastMessage: {
+//       text: string; 
+//       timestamp: {
+//         seconds: number; 
+//       }; 
+//     }
+//   }
+// }
+
 export interface ChatData {
   [key: string]: {
     userInfo: {
-      uid: string; 
-      displayName: string; 
-      photoURL: string; 
-    }; 
+      uid: string;
+      displayName: string;
+      photoURL: string;
+    };
     date: {
-      seconds: number; 
+      seconds: number;
     };
     lastMessage?: {
-      text: string; 
+      text: string;
       timestamp: {
-        seconds: number; 
-      }
-    }
-  }
+        seconds: number;
+      };
+    };
+  };
 }

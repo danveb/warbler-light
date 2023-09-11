@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 // add firebase to webapp
 const firebaseConfig = {
@@ -20,5 +21,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app); 
 // initialize auth 
 const auth = getAuth(app); 
+// initialize firebase storage -- only for uploading img
+const storage = getStorage(app); 
 
-export { app, db, auth }; 
+export { app, db, auth, storage }; 
