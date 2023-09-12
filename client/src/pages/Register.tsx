@@ -1,12 +1,13 @@
 import { useState } from "react"; 
-import "../../styles/Register.css"; 
-import { RegisterProps } from "../../types";
+import "../styles/Register.css"; 
+import { RegisterProps } from "../types";
 import { Link, useNavigate } from "react-router-dom";
 import GoogleButton from "react-google-button";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../context/AuthContext";
 import { updateProfile } from "firebase/auth";
-import { db } from "../../firebase";
+import { db } from "../firebase";
 import { doc, setDoc } from "firebase/firestore"; 
+import { setDefaultAvatar } from "../utils";
 
 export default function Register() {
   // UserAuth 
@@ -20,7 +21,7 @@ export default function Register() {
     displayName: "", 
     email: "", 
     password: "", 
-    avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Twemoji_1f351.svg/1200px-Twemoji_1f351.svg.png", 
+    avatar: setDefaultAvatar(), 
   }); 
 
   // destructure all elements from formData 
@@ -105,7 +106,7 @@ export default function Register() {
             type="file"
             id="file"
             name="avatar"
-            onChange={handleChange}
+            onChange={(e) => e.target.files?.[0]}
           />
           <button>Register</button>
           <p>already have an account?<Link to="/login">Login</Link></p>

@@ -1,15 +1,12 @@
 import { useState } from "react"; 
-import "../../styles/Login.css"; 
-import { LoginProps } from "../../types";
+import "../styles/Login.css"; 
+import { LoginProps } from "../types";
 import { Link, useNavigate } from "react-router-dom";
-import GoogleButton from "react-google-button";
-import { UserAuth } from "../../context/AuthContext";
-import { doc, setDoc } from "firebase/firestore"; 
-import { db } from "../../firebase";
+import { UserAuth } from "../context/AuthContext";
 
 export default function Login() {
   // UserAuth 
-  const { googleSignIn, loginWithEmailAndPassword } = UserAuth();
+  const { loginWithEmailAndPassword } = UserAuth();
   
   // useNavigate
   const navigate = useNavigate(); 
@@ -30,28 +27,6 @@ export default function Login() {
       [e.target.name]: e.target.value, 
     })); 
   };
-
-  // handleGoogleSignIn
-  const handleGoogleSignIn = async () => {
-    try {
-      const response = await googleSignIn(); 
-      const userCredential = response; 
-      
-      // add user's credential into firebase firestore db 
-      await setDoc(doc(db, "users", userCredential.user.uid), {
-        uid: userCredential.user.uid, 
-        displayName: userCredential.user.displayName, 
-        email: userCredential.user.displayName, 
-        photoURL: userCredential.user.photoURL, 
-      }); 
-
-      // add userChats into firestore db 
-      await setDoc(doc(db, "userChats", userCredential.user.uid), {}); 
-      navigate("/"); 
-    } catch(error) {
-      console.log(error); 
-    }
-  }
 
   // handleLoginWithEmailAndPassword 
   const handleLoginWithEmailAndPassword = async (email: string, password: string) => {
@@ -97,14 +72,6 @@ export default function Login() {
           <button>Login</button>
           <p>new to warbler?<Link to="/register">Register</Link></p>
           {/* currently there's a bug affecting GoogleSignIn where chats are not correctly loaded... */}
-          {/* <div className="googleBtn">
-            <GoogleButton 
-              // type="light" // by default it's dark
-              // label="" // custom message if needed
-              // handle googleSignIn
-              onClick={handleGoogleSignIn}
-            />
-          </div> */}
         </form>
       </div>
     </div>

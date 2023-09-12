@@ -2,21 +2,6 @@ import { createContext, useReducer, ReactNode, useContext } from "react";
 import { UserAuth } from "./AuthContext";
 import { User } from "firebase/auth";
 
-// export interface User {
-//   uid: string; 
-//   displayName: string; 
-//   photoURL: string; 
-// }
-
-export interface Chat {
-  date: number; 
-  lastMessage: {
-    text: string; 
-    timestamp: number; 
-  }; 
-  userInfo: User; 
-}
-
 export interface ChatState {
   chatId: string; 
   currentUser: User | null; 
@@ -24,8 +9,7 @@ export interface ChatState {
 
 export interface ChatAction {
   type: string; 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload: any; 
+  payload: User; 
 }
 
 export interface ChatContextProps {
@@ -46,11 +30,7 @@ export const ChatContextProvider = ({ children }: ChatContextProviderProps) => {
   // INITIAL_STATE coming from ChatState 
   const INITIAL_STATE: ChatState = {
     chatId: "null", 
-    currentUser: {
-      uid: "", 
-      displayName: "", 
-      photoURL: "", 
-    }, 
+    currentUser: {} as User, 
   }
 
   // reducer
@@ -58,16 +38,10 @@ export const ChatContextProvider = ({ children }: ChatContextProviderProps) => {
     switch (action.type) {
       // when "CHANGE_USER" 
       case "CHANGE_USER":
-        // eslint-disable-next-line no-case-declarations
-        const currentUser = action.payload; 
-        // eslint-disable-next-line no-case-declarations
-        const chatId = 
-          user!.uid > currentUser.uid 
-          ? user!.uid + currentUser.uid 
-          : currentUser.uid + user!.uid
         return {
-          currentUser, 
-          chatId, 
+          currentUser: action.payload,
+          chatId:
+            user!.uid > action.payload.uid ? user!.uid + action.payload.uid : action.payload.uid + user?.uid, 
         }
       // default we'll return state 
       default: 

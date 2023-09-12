@@ -20,6 +20,7 @@ export default function ChatSearch() {
 
     try {
       const querySnapshot = await getDocs(q); 
+      console.log(querySnapshot); 
       querySnapshot.forEach((doc) => {
         // console.log(doc.data()); // returns displayName, email, photoURL, uid
         setCurrentUser(doc.data() as User); 

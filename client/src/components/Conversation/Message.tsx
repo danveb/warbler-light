@@ -3,6 +3,7 @@ import { UserAuth } from "../../context/AuthContext";
 import { ChatContextP } from "../../context/ChatContext";
 import "../../styles/Message.css"; 
 import { useEffect, useRef } from "react";
+import { calculateMessageDate } from "../../utils";
 
 export interface MessageProps {
   message: {
@@ -10,7 +11,7 @@ export interface MessageProps {
     id: string; 
     senderId: string; 
     text: string; 
-    img: string; 
+    img: string;  
   }; 
 }
 
@@ -31,17 +32,16 @@ export default function Message({ message }: MessageProps) {
   return (
     <div className={`message ${message.senderId === user?.uid && "owner"}`}>
       <div className="message__info">
-        {user && user.photoURL && (
-          <img src={message.senderId === user?.uid ? user?.photoURL : data.currentUser?.photoURL} alt="" />
+        {user && data.currentUser && (
+          <img 
+            src={message.senderId === user?.uid ? user?.photoURL || "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80" : data.currentUser?.photoURL || "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3270&q=80"} 
+            alt="user profile pic" 
+          />
         )}
-        <span>just now</span>
+        <span>{calculateMessageDate(message.date)}</span>
       </div>
       <div className="message__content">
         <p>{message.text}</p>
-        {/* <img src="https://images.unsplash.com/photo-1563718944-758794a56b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2hpY2Fnb3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60" alt="" /> */}
-        {message.img && (
-          <img src={message.img} alt="an image from user" />
-        )}
       </div>
     </div>
   )
