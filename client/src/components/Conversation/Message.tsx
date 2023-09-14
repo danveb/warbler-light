@@ -1,19 +1,9 @@
-import { Timestamp } from "firebase/firestore";
 import { UserAuth } from "../../context/AuthContext";
 import { ChatContextP } from "../../context/ChatContext";
 import "../../styles/Message.css"; 
 import { useEffect, useRef } from "react";
 import { calculateMessageDate } from "../../utils";
-
-export interface MessageProps {
-  message: {
-    date: Timestamp; 
-    id: string; 
-    senderId: string; 
-    text: string; 
-    img: string;  
-  }; 
-}
+import { MessageProps } from "../../types";
 
 export default function Message({ message }: MessageProps) {
   // UserAuth
@@ -25,12 +15,13 @@ export default function Message({ message }: MessageProps) {
   const ref = useRef<HTMLDivElement>(null); 
 
   // useEffect 
+  // create a reference on div so that app will scroll to latest message
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" })
   }, [message]); 
 
   return (
-    <div className={`message ${message.senderId === user?.uid && "owner"}`}>
+    <div ref={ref} className={`message ${message.senderId === user?.uid && "owner"}`}>
       <div className="message__info">
         {user && data.currentUser && (
           <img 

@@ -1,10 +1,10 @@
-import { Message } from "./index"; 
-import "../../styles/Messages.css"; 
-import { ChatContextP } from "../../context/ChatContext";
 import { useEffect, useState } from "react";
+import { ChatContextP } from "../../context/ChatContext";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { UserAuth } from "../../context/AuthContext";
+import { Message } from "./index"; 
+import "../../styles/Messages.css"; 
 
 export default function Messages() {
   // UserAuth 

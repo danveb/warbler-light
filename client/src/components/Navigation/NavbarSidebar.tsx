@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { links } from "../../constants/links";
 import "../../styles/NavbarSidebar.css"; 
-import { openProps } from "../../types";
+import { NavbarProps } from "../../types";
 
-export default function NavbarSidebar({ menuOpen, setMenuOpen }: openProps) {
+export default function NavbarSidebar({ menuOpen, setMenuOpen }: NavbarProps) {
   return (
     <nav data-testid="sidebarId" className={"sidebar__nav " + (menuOpen && "active")}>
       <div className="sidebar">

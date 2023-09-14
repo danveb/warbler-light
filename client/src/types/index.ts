@@ -1,6 +1,7 @@
-import React from "react";
+import { Timestamp } from "firebase/firestore";
+import { ReactNode } from "react";
 
-export interface openProps {
+export interface NavbarProps {
   menuOpen: boolean; 
   setMenuOpen: (menuOpen: boolean) => void; 
 }
@@ -23,7 +24,7 @@ export interface LoginProps {
 }
 
 export interface ProtectedRouteProps {
-  children: React.ReactNode; 
+  children: ReactNode; 
 }
 
 export interface ChatData {
@@ -35,6 +36,7 @@ export interface ChatData {
     };
     date: {
       seconds: number;
+      nanoseconds: number; 
     };
     lastMessage?: {
       text: string;
@@ -43,4 +45,14 @@ export interface ChatData {
       };
     };
   };
+}
+
+export interface MessageProps {
+  message: {
+    date: Timestamp; 
+    id: string; 
+    senderId: string; 
+    text: string; 
+    img: string; 
+  }
 }

@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { links } from "../../constants/links"; 
+import { NavbarProps } from "../../types/index"; 
 import "../../styles/Navbar.css"; 
-import { openProps } from "../../types/index"; 
 
-export default function Navbar({ menuOpen, setMenuOpen }: openProps) {
+export default function Navbar({ menuOpen, setMenuOpen }: NavbarProps) {
   // useEffect 
   // when resizing window we'll handle state back to closing navbarSidebar/navbar bg
   useEffect(() => {
