@@ -12,13 +12,14 @@
   -webkit-text-size-adjust: 100%;
 
   /* Palette */
-  --raisin-black: #191c26; 
+  --coarse-wool: #191c26; 
+  --black-howl: #1e212d; 
   --rich-black: #111319; 
   --alice-blue: #f4f9fc; 
   --bottle-green: #006241; 
 }
 
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box; 
@@ -32,7 +33,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: var(--raisin-black);
+  background-color: var(--coarse-wool);
   color: var(--alice-blue); 
   cursor: pointer;
   transition: background-color 0.45s;
@@ -42,7 +43,7 @@ button {
 button:hover {
   border-color: #646cff;
   background-color: var(--alice-blue); 
-  color: var(--raisin-black); 
+  color: var(--coarse-wool); 
 }
 
 .googleBtn {

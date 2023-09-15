@@ -1,56 +1,48 @@
-header {
+.navbar {
+  width: 100%; 
+  height: 8rem; 
   position: sticky; 
   top: 0; 
-  left: 0; 
   z-index: 3; 
   transition: all 0.4s ease-out; 
-  background-color: var(--rich-black); 
-}
-
-.navbar {
-  height: 60px; 
-  width: 100%; 
+  background-color: var(--coarse-wool); 
 }
 
 .navbar__wrapper {
-  height: 100%; 
-  max-width: 768px; 
-  margin: 0 auto; 
   display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-}
-
-.navbar__logo {
-  display: flex; 
-  align-items: center; 
   justify-content: center; 
+  align-items: center; 
+  flex-direction: column; 
+  height: 100%; 
+  width: 100%; 
+  gap: 20px; 
 }
 
-.navbar__logo a {
+.navbar__top, 
+.navbar__bottom {
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+}
+
+.navbar__top a {
   text-decoration: none; 
   color: var(--alice-blue); 
-  font-size: 22px; 
+  font-size: 26px; 
   letter-spacing: 0.2rem;
 }
 
-.navbar__links ul {
+.navbar__links {
   display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  gap: 25px; 
-  font-size: 14px; 
-}
-
-.navbar__links li {
+  align-items: flex-start; 
+  justify-content: flex-start; 
+  gap: 50px; 
   list-style: none; 
 }
 
 .navbar__links a {
-  text-decoration: none; 
   color: var(--alice-blue); 
   text-decoration: none; 
-  color: #fff; 
   background: linear-gradient(0deg, #fff, #fff) no-repeat right bottom / 0 var(--bg-h);
   transition: background-size 350ms;
   --bg-h: 100%; 
@@ -59,7 +51,17 @@ header {
 .navbar__links a:where(:hover, :focus-visible) {
   background-size: 100% var(--bg-h);
   background-position-x: left;
-  color: var(--raisin-black); 
+  color: var(--coarse-wool); 
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: space-between;
+  width: 18px;
+  height: 15px;
+  cursor: pointer;
 }
 
 .hamburger__menu {
@@ -74,7 +76,7 @@ header {
 
 .hamburger__menu span {
   width: 100%; 
-  height: 1.5px; 
+  height: 2px; 
   background-color: var(--alice-blue); 
   transform-origin: left; 
   transition: all 0.7s ease; 
@@ -98,12 +100,6 @@ header {
   transform: rotate(-49deg); 
 }
 
-@media screen and (max-width: 1024px) {
-  .navbar__wrapper {
-    padding: 0 20px; 
-  }
-}
-
 @media screen and (min-width: 768.9px) {
   .hamburger__menu {
     display: none; 
@@ -111,7 +107,7 @@ header {
 }
 
 @media screen and (max-width: 768px) {
-  .navbar__links {
+  .navbar__bottom {
     display: none; 
   }
 }

@@ -1,6 +1,6 @@
 .home {
-  background-color: #b7c7fc; 
-  height: calc(100vh - 60px); 
+  background-color: var(--black-howl); 
+  height: calc(100dvh - 8rem); 
   display: flex; 
   justify-content: center; 
   align-items: center; 

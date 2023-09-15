@@ -22,28 +22,26 @@ export default function Navbar({ menuOpen, setMenuOpen }: NavbarProps) {
   }, [menuOpen, setMenuOpen]);
 
   return (
-    <header>
-      <nav data-testid="navbarId" className={"navbar " + (menuOpen && "active")}>
-        <div className="navbar__wrapper">
-          <div className="navbar__logo">
-            <Link to="/" onClick={() => setMenuOpen(false)}>⚛️🔥💬</Link>
-          </div>
-          <div data-testid="hamburger" className="hamburger__menu" onClick={() => setMenuOpen(!menuOpen)}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div className="navbar__links">
-            <ul>
-              {links.map((link) => (
-                <li key={link.id}>
-                  <Link to={link.url}>{link.text}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <header data-testid="navbarId" className={"navbar " + (menuOpen && "active")}>
+      <div className="navbar__wrapper">
+        <div className="navbar__top">
+          <Link to="/" onClick={() => setMenuOpen(false)}>⚛️🔥💬 WARBLER</Link>
         </div>
-      </nav>
+        <div className="navbar__bottom">
+          <ul className="navbar__links">
+            {links.map((link) => (
+              <li key={link.id}>
+                <Link to={link.url}>{link.text}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div data-testid="hamburger" className="hamburger__menu" onClick={() => setMenuOpen(!menuOpen)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </header>
   )
 }
