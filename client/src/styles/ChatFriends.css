@@ -3,7 +3,7 @@
 }
 
 .chatFriends__user {
-  padding: 3px 10px; 
+  padding: 15px; 
   display: flex; 
   align-items: center; 
   gap: 10px; 
@@ -15,8 +15,8 @@
 }
 
 .chatFriends__user img {
-  width: 45px; 
-  height: 45px; 
+  width: 35px; 
+  height: 35px; 
   border-radius: 50%; 
   object-fit: cover; 
 }
@@ -25,6 +25,7 @@
 .chatFriends__user--info p {
   font-weight: 400; 
   font-family: sans-serif; 
+  margin-bottom: 5px; 
 }
 
 .chatFriends__user--info h3 {
@@ -35,6 +36,7 @@
 .chatFriends__user--info p {
   font-size: 13px; 
   color: #a2a2a2; 
+  line-height: 1.03rem; 
 }
 
 @media screen and (max-width: 480px) {

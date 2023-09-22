@@ -53,7 +53,7 @@
   .chatNav {
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; 
+    justify-content: center; 
   }
   
   .chatNav__user p {

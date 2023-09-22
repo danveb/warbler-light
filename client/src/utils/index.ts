@@ -27,6 +27,5 @@ export const setDefaultAvatar = () => {
   const avatar1 = "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Twemoji_1f351.svg/1200px-Twemoji_1f351.svg.png"; 
   const avatar2 = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Twemoji_1f600.svg/440px-Twemoji_1f600.svg.png"; 
   const randomInt = Math.floor(Math.random() * 2 + 1); 
-  console.log(randomInt); 
   return randomInt === 1 ? avatar1 : avatar2; 
 }

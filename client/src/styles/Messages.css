@@ -1,7 +1,7 @@
 .messages {
   background-color: #ddddf7; 
-  padding: 10px; 
-  height: calc(100% - 140px); 
+  padding: 15px; 
+  height: calc(100% - 95px); 
   overflow: auto; 
 }
 
