@@ -1,6 +1,6 @@
 .contact {
   width: 100%; 
-  height: calc(100vh - 150px);
+  height: calc(100dvh - 128px); 
 }
 
 .contact__wrapper {
@@ -23,18 +23,11 @@
   text-align: center; 
 }
 
-/* .contact__title {
-  font-family: "Mulish", sans-serif; 
-  font-size: 20px; 
-  color: var(--alice-blue); 
-  letter-spacing: 0.5px; 
-} */
-
 .contact__main p {
   font-family: inherit; 
   font-size: 12px; 
   font-weight: 300; 
-  color: #d4d4d4; 
+  color: var(--disco-ball); 
   letter-spacing: 1px; 
   line-height: 1.5rem; 
 }

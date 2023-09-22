@@ -34,7 +34,7 @@
   font-family: inherit; 
   font-size: 16px; 
   font-weight: 300; 
-  color: #d4d4d4; 
+  color: var(--disco-ball); 
   letter-spacing: 1px; 
   line-height: 1.5rem; 
 }
