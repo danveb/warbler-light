@@ -1,5 +1,5 @@
 .register {
-  height: calc(100vh - 60px); 
+  height: calc(100dvh - 128px); 
   width: 100%; 
 }
 

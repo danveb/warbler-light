@@ -49,7 +49,7 @@ export default function Login() {
     <div className="login">
       <div className="login__wrapper">
         <form className="login__form" onSubmit={handleSubmit}>
-          <h2>warbler-lite</h2>
+          <h2>warbler</h2>
           <label htmlFor="email">Email</label>
           <input 
             type="text"

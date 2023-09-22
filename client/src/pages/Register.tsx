@@ -2,7 +2,6 @@ import { useState } from "react";
 import "../styles/Register.css"; 
 import { RegisterProps } from "../types";
 import { Link, useNavigate } from "react-router-dom";
-import GoogleButton from "react-google-button";
 import { UserAuth } from "../context/AuthContext";
 import { updateProfile } from "firebase/auth";
 import { db } from "../firebase";
@@ -71,7 +70,7 @@ export default function Register() {
     <div className="register">
       <div className="register__wrapper">
         <form className="register__form" onSubmit={handleSubmit}>
-          <h2>warbler-lite</h2>
+          <h2>warbler</h2>
           <label htmlFor="displayName">Display Name</label>
           <input 
             type="text"
@@ -110,12 +109,6 @@ export default function Register() {
           />
           <button>Register</button>
           <p>already have an account?<Link to="/login">Login</Link></p>
-          <div className="googleBtn">
-            <GoogleButton 
-              // type="light" // by default it's dark
-              // label="" // custom message if needed
-            />
-          </div>
         </form>
       </div>
     </div>

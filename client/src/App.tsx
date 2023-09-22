@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom"; 
-import { Home, About, Login, Register, NotFound } from "./pages";
+import { Home, About, Login, Register, NotFound, Contact } from "./pages";
 import { Navbar, NavbarSidebar } from "./components/Navigation/index";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ChatContextProvider } from "./context/ChatContext";
@@ -19,6 +19,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ChatContextProvider>
