@@ -43,7 +43,7 @@
 .navbar__links a {
   color: var(--alice-blue); 
   text-decoration: none; 
-  background: linear-gradient(0deg, #fff, #fff) no-repeat right bottom / 0 var(--bg-h);
+  background: linear-gradient(0deg, var(--alice-blue), var(--alice-blue)) no-repeat right bottom / 0 var(--bg-h);
   transition: background-size 350ms;
   --bg-h: 100%; 
 }

@@ -25,7 +25,6 @@
   box-sizing: border-box; 
 }
 
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -44,6 +43,11 @@ button:hover {
   border-color: #646cff;
   background-color: var(--alice-blue); 
   color: var(--coarse-wool); 
+}
+
+a {
+  text-decoration: none; 
+  color: inherit; 
 }
 
 .googleBtn {

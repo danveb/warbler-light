@@ -11,7 +11,7 @@
   background-color: transparent; 
   border: none; 
   outline: none; 
-  color: #fff; 
+  color: var(--alice-blue); 
 }
 
 .chatSearch__form input::placeholder { 
@@ -23,7 +23,7 @@
   display: flex; 
   align-items: center; 
   gap: 10px; 
-  color: #fff; 
+  color: var(--alice-blue); 
   cursor: pointer; 
 }
 

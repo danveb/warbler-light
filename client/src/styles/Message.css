@@ -16,7 +16,7 @@
 
 .message.owner .message__content p  {
   background-color: #8da4f1; 
-  color: #fff; 
+  color: var(--alice-blue); 
   border-radius: 10px 0 10px 10px; 
 }
 
@@ -50,7 +50,7 @@
 }
 
 .message__content p {
-  background-color: #fff; 
+  background-color: var(--alice-blue); 
   color: #000; 
   padding: 10px 20px; 
   border-radius: 0 10px 10px 10px; 

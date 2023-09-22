@@ -1,7 +1,7 @@
 .sidebar__nav {
   height: 100dvh; 
   width: 100%; 
-  background-color: #fff; 
+  background-color: var(--alice-blue); 
   position: fixed; 
   top: 8rem; 
   right: -100dvw; 

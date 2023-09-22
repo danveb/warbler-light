@@ -1,5 +1,5 @@
 .messageInput {
-  background-color: #fff; 
+  background-color: var(--alice-blue); 
   padding: 10px; 
   color: #000; 
   display: flex; 
@@ -39,7 +39,7 @@
 .messageInput--btn {
   border: none; 
   padding: 5px 10px; 
-  color: #fff; 
+  color: var(--alice-blue); 
   background-color: #8da4f1; 
   font-size: 13px; 
 }
