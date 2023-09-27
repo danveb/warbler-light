@@ -48,7 +48,7 @@ export default function Login() {
   return (
     <div className="login">
       <div className="login__wrapper">
-        <form className="login__form" onSubmit={handleSubmit}>
+        <form className="login__form" onSubmit={handleSubmit} data-testid="form">
           <h2>warbler</h2>
           <label htmlFor="email">Email</label>
           <input 

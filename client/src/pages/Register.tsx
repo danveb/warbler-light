@@ -69,7 +69,7 @@ export default function Register() {
   return (
     <div className="register">
       <div className="register__wrapper">
-        <form className="register__form" onSubmit={handleSubmit}>
+        <form className="register__form" onSubmit={handleSubmit} data-testid="form">
           <h2>warbler</h2>
           <label htmlFor="displayName">Display Name</label>
           <input 
