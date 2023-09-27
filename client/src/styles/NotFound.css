@@ -23,14 +23,14 @@
   text-align: center; 
 }
 
-.notFound__title {
+.notFound__title-text {
   font-family: "Mulish", sans-serif; 
   font-size: 20px; 
   color: var(--alice-blue); 
   letter-spacing: 0.5px; 
 }
 
-.notFound__content {
+.notFound__content-text {
   font-family: inherit; 
   font-size: 16px; 
   font-weight: 300; 
@@ -46,11 +46,11 @@
 }
 
 @media screen and (max-width: 768px) {
-  .notFound__title {
+  .notFound__title-text {
     font-size: 16px; 
   }
 
-  .notFound__content {
+  .notFound__content-text {
     font-size: 14px; 
   }
 }
