@@ -92,6 +92,14 @@ Start development server
 $ yarn dev
 ```
 
+<h3>Test</h3>
+
+Running Vitest v0.34.5 with React Testing Library
+
+```sh
+$ yarn add -D vitest jsdom @testing-library/react @testing-library/jest-dom @types/jest @types/node
+```
+
 <h3>File Tree</h3>
 
 ```
